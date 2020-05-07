@@ -1,5 +1,14 @@
- [1] Two Sum
-Easy
+# [1]Two Sum (Easy)
+
+##Contents
+
+- Solution description
+
+
+
+## Solution Explanation
+
+###Problem description
 
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -13,9 +22,10 @@ return [0, 1].
 '''
 
  
-  (1) Brute Force 
+###  (1) Brute Force 
   The most stright forward solution is to iterate the array and find the pair 
    by testing value in array one by one. 
+   '''
    class Solution {
     public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -30,8 +40,9 @@ return [0, 1].
         }
         vector<int> result = {};
         return result;        
-    }
-};
+        }
+    };
+   '''
 
 1 arithmetical operation = 1, 1 access = 1, let size of nums = n
 runtime (356 ms), memory usage 7 MB
@@ -42,7 +53,7 @@ by looping through the rest of array which takes O(n) time.
 Therefore, the time complexity is O(n^2).
 Space complexity : O(1). 
 
-(2) Tow-Pass Hash Table
+### (2) Tow-Pass Hash Table
 First create a hash table based on the corresponding difference between 
    the sum and individual integer provided in the array. 
   Then search each integer in the hash table to find the complement.
@@ -84,7 +95,7 @@ which stores exactly n elements.
     Your runtime (16 ms)
     Your memory usage (10.6 MB)
 
-(3) One-pass Hash Table
+### (3) One-pass Hash Table
    Assuming the number Y is the complement of number X to make up the sum, 
      and array index of Y is behind of X. Moverover, the order of inserting 
      array elements into hash table is according to the array index.
@@ -152,4 +163,4 @@ public:
     }
 };
 
-
+## C++ knowledge
