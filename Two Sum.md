@@ -6,7 +6,9 @@
   - [(1) Brute Force](#1-brute-force) 
   - [(2) Tow-Pass Hash Table](#2-tow-pass-hash-table)
   - [(3) One-Pass Hash Table](#3-one-pass-hash-table)
-- [C++ knowledge](C++-knowledge)
+- [C++ knowledge](#c-knowledge)
+  - [General Description](#general-description)
+  - [Implementation Details](#implementation-details)
 
 ## Solution Explanation
 
@@ -46,9 +48,9 @@ return [0, 1].
 
 
 
-- Time complexity : O(n^2).\
-  For each element, we try to find its complement by looping through the rest of array which takes O(n) time. Therefore, the time complexity is O(n^2).\
-- Space complexity : O(1). 
+- Time complexity : O(n^2)\
+  For each element, we try to find its complement by looping through the rest of array which takes O(n) time. Therefore, the time complexity is O(n^2)\
+- Space complexity : O(1) 
 - Performance: runtime (356 ms), memory usage 7 MB.
 
 ### (2) Tow-Pass Hash Table
@@ -81,11 +83,10 @@ public:
 
 ```
 
-- Time complexity : O(n). \
- We traverse the list containing n elements exactly twice.  Since the hash table reduces the look up time to O(1), the time complexity is O(n).
-
-- Space complexity : O(n). \
-The extra space required depends on the number of items stored in the hash table, which stores exactly n elements. 
+- Time complexity : O(n)\
+  We traverse the list containing n elements exactly twice.  Since the hash table reduces the look up time to O(1), the time complexity is O(n).
+- Space complexity : O(n)\
+  The extra space required depends on the number of items stored in the hash table, which stores exactly n elements. 
 - Performance: runtime 16 ms, memory usage 10.6 MB.
     
     
@@ -118,10 +119,18 @@ public:
 ```
 
 
-- Time complexity : O(n).\ 
-We traverse the list containing n elements only once. Each look up in the table costs only O(1) time.
-- Space complexity : O(n).\
-The extra space required depends on the number of items stored in the hash table, which stores at most n elements.
+- Time complexity : O(n)\
+  We traverse the list containing n elements only once. Each look up in the table costs only O(1) time.
+- Space complexity : O(n)\
+  The extra space required depends on the number of items stored in the hash table, which stores at most n elements.
 - Performance: runtime 12 ms, memory usage 10.1 MB.
 
 ## C++ knowledge
+The implenation of hash table in this problem written by C++ used ```unordered_map``` which is defiend in std library ([More in here](http://www.cplusplus.com/reference/unordered_map/unordered_map/)).
+
+### General Description
+  - Unordered maps are associative containers that store elements formed by the combination of a key value and a mapped value, and which allows for fast retrieval of individual elements based on their keys.
+  - Internally, the elements in the unordered_map are not sorted in any particular order with respect to either their key or mapped values, but organized into buckets depending on their hash values to allow for fast access to individual elements directly by their key values (with a constant average time complexity on average).
+  - Iterators in the container are at least forward iterators.
+### Implementation Details
+  - Constractor 
