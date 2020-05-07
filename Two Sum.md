@@ -1,5 +1,6 @@
 # [1]Two Sum (Easy)
 
+The solution using hashing, principle of hashing can be found in [source](https://github.com/KV152/Data-Structures-and-Algorithm/blob/master/Hashing.md "hashing")
 ## Contents
 - [Solution Explanation](#solution-explanation)
   - [Problem description](#problem-description)
