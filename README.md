@@ -9,9 +9,9 @@ C++ solution for LeetCode
 
 ## Sort by difficulty
   ### Easy
-   - [[1]Two Sum](two-sum.md) 
+   - [[1]Two Sum](Two%20Sum.md) 
   
 
 ## Sort by tag
   ### Array
-   - [[1]Two Sum](two-sum.md) 
+   - [[1]Two Sum](Two%20Sum.md) 
