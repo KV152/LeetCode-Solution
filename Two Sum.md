@@ -134,4 +134,56 @@ The implenation of hash table in this problem written by C++ used ```unordered_m
   - Internally, the elements in the unordered_map are not sorted in any particular order with respect to either their key or mapped values, but organized into buckets depending on their hash values to allow for fast access to individual elements directly by their key values (with a constant average time complexity on average).
   - Iterators in the container are at least forward iterators.
 ### Implementation Details
-  - Constractor 
+  - Construcator\
+    Object, initializing its contents depending on the constructor version used:
+    ``` C++
+      int main ()
+      {
+        stringmap first;                              // empty
+        stringmap second ( {{"apple","red"},{"lemon","yellow"}} );       // Initializes the container with the contents of the list.
+        stringmap third ( {{"orange","orange"},{"strawberry","red"}} );  // Initializes the container with the contents of the list.
+        stringmap fourth (second);                    // copy   // initialized to have the same contents of unordered_map object.
+        stringmap fifth (merge(third,fourth));        // move  //object acquires the contents of the rvalue ump.
+        stringmap sixth (fifth.begin(),fifth.end());  // range //containing copies of each of the elements in the range [first,last).
+
+        std::cout << "sixth contains:";
+        for (auto& x: sixth) std::cout << " " << x.first << ":" << x.second;
+        std::cout << std::endl;
+
+        return 0;
+      }
+      ```
+  - Element\
+    The element in the ```unordered_map``` is in pair class with its first value corresponding to the const version of the key type (template parameter Key) and its second value corresponding to the mapped value (template parameter T): ```typedef pair<const Key, T> value_type;```. 
+    - We can access or create element by ```[]``` operator: 
+    ``` C++
+      std::unordered_map<std::string,std::string> mymap;
+      
+      mymap["Bakery"]="Barbara";  // new element inserted
+      mymap["Bakery"] = mymap["Produce"];   // existing elements accessed (read/written)
+    ```
+    - Accessing can be achived by iterator:
+    ```C++
+        std::unordered_map<std::string,double> mymap = {
+         {"mom",5.4},
+         {"dad",6.1},
+         {"bro",5.9} };
+        unordered_map<std::string,double>::const_iterator it; 
+         std::unordered_map<std::string,double>::const_iterator got = mymap.find (input);
+         std::cout << got->first << " is " << got->second;
+    ```
+  - Find\
+    Searches the container for an element with k as key and returns an **iterator** to it if found, otherwise it returns an iterator to unordered_map::**end** (the element past the end of the container).
+    ``` C++
+      std::unordered_map<std::string,double> mymap = {
+       {"mom",5.4},
+       {"dad",6.1},
+       {"bro",5.9} };
+      std::unordered_map<std::string,double>::const_iterator got = mymap.find (input);
+
+      if ( got == mymap.end() )
+        std::cout << "not found";
+      else
+        std::cout << got->first << " is " << got->second;
+    ```
+	
