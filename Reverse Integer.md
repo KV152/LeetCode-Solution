@@ -1,4 +1,4 @@
-# [7] Reverse Integer
+# [7] Reverse Integer (Easy)
 ## Contents
   - [Solution Explanation](#solution-explanation)
     - [Problem Describtion](#problem-describtion)
