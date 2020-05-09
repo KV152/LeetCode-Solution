@@ -5,7 +5,7 @@
 ### Problem Description 
 There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. 
 The overall run time complexity should be O(log (m+n)). 
-You may assume nums1 and nums2 cannot be both empty.\
+You may assume nums1 and nums2 cannot be both empty.
 
 Example 1:
 ```
@@ -22,7 +22,7 @@ nums2 = [3, 4]
 The median is (2 + 3)/2 = 2.5
 
 
-### (1) Iterating to find
+### (1) Iterating to find (wrong)
 Go though half of total amount of elements to find median of both arrays.
 ``` C++
 class Solution {
