@@ -112,7 +112,7 @@ Scanning i in [0, m] to find an object i such that:
     B[j-1]<= A[i] and A[i-1]<= B[j], where j = (m+n+1)/2 - i
 ```
 The binary search steps for median can be expressed as:
-1. Set i_min = 0, i_max = m, then start searching in [i_min, i_max]
+1. Set i_min = 0, i_max = m, then start searching in $[i_min, i_max]$
 2. Set i = (i_min + i_max)/2, j = (m+n+1)/2 - i
 3. Now we have len(left_part)=len(right_part). And there are only 3 situations that we may encounter:
     - $B[j−1]≤A[i] and A[i−1]≤B[j]\text{A}[i-1] \leq \text{B}[j]A[i−1]≤B[j]$
