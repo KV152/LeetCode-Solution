@@ -99,17 +99,23 @@ public:
 ### (2) Recursive Approach (Binary Search)
 This solution is based on leetcode solution.
 Complexity required (log(m+n)) which is the same to binary search, and the median is the middle of the array. Therefore, we could build an approach based on idea of binary search. Before building the binary search, we have to build a model to describe two array.
+#### Model
 Assuming there are two array A and B, and sizes of two array are m and n respectively.
-Let i be the index for A and j for the index for B, assuming the following index i and j are valid. When i and j pointed to the median of the combined sorted array, i and j must satisfied following coditions:
+Let i be the index for A and j for the index for B, assuming the following index i and j are valid. When i and j pointed to the median of the combined sorted array.
+#### Condition
+Assuming i and j must satisfied following coditions:
 ```
 1. i+j = (m-i) + (n-j)
     (if n>=m,  we just need to set: i=0∼m, j = (m+n+1)/2 - i)
 2. B[j-1]<= A[i] and A[i-1]<= B[j]
 ```
-Assuming the i and j in the both array, so we scanning follwing the below condition
+#### Searching Steps
+Assuming the i and j in the both array, if we find the median, i and j satisfy follwoing two stop conditions:
 ```
 Scanning i in [0, m] to find an object i such that: 
-    B[j-1]<= A[i] and A[i-1]<= B[j], where j = (m+n+1)/2 - i
+    1. B[j-1]<= A[i], 
+    2. A[i-1]<= B[j], 
+    (where j = (m+n+1) / 2 - i)
 ```
 The binary search steps for median can be expressed as:
 1. Set i_min = 0, i_max = m, then start searching in $[i_{min}, i_{max}]$
@@ -123,6 +129,25 @@ The binary search steps for median can be expressed as:
         Decaseing i and increasing j. Searching in the range: $[i_{min}, i-1]$
 
 When i is found, the median is max(A[i−1],B[j−1]) if (m+n) is odd. Otherwise median = (A[i−1]+B[j−1])/2
+#### Edge Conditions
+When we facing i=0,i=m,j=0,j=n, then A[i−1], B[j−1], A[i] or B[j] may not valid. Then, we can find the median in one array directly. Therefore, the previos stop conditions can be expressed as
+```
+Scanning i in [0, m] to find an object i such that: 
+    1. j=0 or i=m or B[j-1]<= A[i], 
+    2. i=0 or j=n or A[i-1]<= B[j], 
+    (where j = (m+n+1) / 2 - i)
+```
+In searching loop, we will encounter only three situations:
+```
+- Meet Stop conditions:
+    1. j=0 or i=m or B[j-1]<= A[i], 
+    2. i=0 or j=n or A[i-1]<= B[j], 
+    (where j = (m+n+1) / 2 - i)
+- i<m and B[j−1]>A[i]:
+    i is small, increasing i.
+- i>0 and A[i−1]>B[j]:
+     i is big, decreasing it.
+```
 
 
 ## C++ Knowledge
