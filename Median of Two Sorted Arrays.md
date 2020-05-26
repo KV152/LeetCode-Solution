@@ -102,13 +102,15 @@ This solution is based on leetcode solution. Complexity required (log(m+n)) whic
 #### Model
 Assuming there are two array A and B, and sizes of two array are m and n respectively.
 Let i be the index for A and j for the index for B, assuming the following index i and j are valid. When i and j pointed to the median of the combined sorted array.
-#### Condition
-Assuming i and j must satisfied following coditions:
+#### Constrians
+If i and j pointed to the median of combined sorted array, then they must satisfied following constrians:
 ```
 1. i+j = (m-i) + (n-j)
     (if n ≥ m,  we just need to set: i=0∼m, j = (m+n+1)/2 - i)
 2. B[j-1] ≤ A[i] and A[i-1] ≤ B[j]
 ```
+With the first constrians and the goal that i and j point to the median of the combined sorted array, j can be expressed by i with aid of size of both array.  
+
 #### Searching Steps
 Assuming the i and j in the both array, if we find the median, i and j satisfy follwoing two stop conditions:
 ```
