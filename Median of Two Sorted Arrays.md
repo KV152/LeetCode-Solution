@@ -97,8 +97,8 @@ public:
 - Performance: runtime beats 18.72 % of cpp submissions (44 ms), memory usage beats 5.16 % of cpp submissions (89.2 MB)
 
 ### (2) Recursive Approach (Binary Search)
-This solution is based on leetcode solution.
-Complexity required (log(m+n)) which is the same to binary search, and the median is the middle of the array. Therefore, we could build an approach based on idea of binary search. Before building the binary search, we have to build a model to describe two array.
+In order to solve the complex problem with complexity requirement, it's better to implement analyze with the aid of mathmatic modelling and flowchart of the whole process.\
+This solution is based on leetcode solution. Complexity required (log(m+n)) which is the same to binary search, and the median is the middle of the array. Therefore, we could build an approach based on idea of binary search. Before building the binary search, we have to build a model to describe two array.
 #### Model
 Assuming there are two array A and B, and sizes of two array are m and n respectively.
 Let i be the index for A and j for the index for B, assuming the following index i and j are valid. When i and j pointed to the median of the combined sorted array.
