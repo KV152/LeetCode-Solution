@@ -139,13 +139,13 @@ Scanning i in [0, m] to find an object i such that:
 ```
 In searching loop, we will encounter only three situations:
 ```
-- Meet Stop conditions:
-    1. j=0 or i=m or B[j-1] ≤ A[i], 
-    2. i=0 or j=n or A[i-1] ≤ B[j], 
+1. Meet Stop conditions:
+    * j=0 or i=m or B[j-1] ≤ A[i], 
+    * i=0 or j=n or A[i-1] ≤ B[j], 
     (where j = (m+n+1) / 2 - i)
-- i<m and B[j−1]>A[i]:
+2. i<m and B[j−1]>A[i]:
     i is small, increasing i.
-- i>0 and A[i−1]>B[j]:
+3. i>0 and A[i−1]>B[j]:
      i is big, decreasing it.
 ```
 
