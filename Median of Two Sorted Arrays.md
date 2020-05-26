@@ -98,7 +98,7 @@ public:
 
 ### (2) Recursive Approach (Binary Search)
 In order to solve the complex problem with complexity requirement, it's better to implement analyze with the aid of mathmatic modelling and flowchart of the whole process.\
-This solution is based on leetcode solution. Complexity required (log(m+n)) which is the same to binary search, and the median is the middle of the array. Therefore, we could build an approach based on idea of binary search. Before building the binary search, we have to build a model to describe two array.
+This solution is based on leetcode solution. Complexity required (log(m+n)) which is the same to binary search, and the median is the middle of the array. Therefore, we could build an approach based on idea of binary search. Before building the binary search, we have to build a model to describe two array. (In searching, we have to face the probelm that two index in differernt array. By modelling the probelm, we can find the link between two index and use only one index to do the searching.)
 #### Model
 Assuming there are two array A and B, and sizes of two array are m and n respectively.
 Let i be the index for A and j for the index for B, assuming the following index i and j are valid. When i and j pointed to the median of the combined sorted array.
@@ -112,7 +112,7 @@ If i and j pointed to the median of combined sorted array, then they must satisf
 With the first constrians and the goal that i and j point to the median of the combined sorted array, j can be expressed by i with aid of size of both array.  
 
 #### Searching Steps
-Assuming the i and j in the both array, if we find the median, i and j satisfy follwoing two stop conditions:
+Assuming the i and j are valid in both array, if we find the median, i and j satisfy follwoing two stop conditions:
 ```
 Scanning i in [0, m] to find an object i such that: 
     1. B[j-1] ≤ A[i], 
@@ -120,8 +120,8 @@ Scanning i in [0, m] to find an object i such that:
     (where j = (m+n+1) / 2 - i)
 ```
 The binary search steps for median can be expressed as:
-1. Set i_min = 0, i_max = m, then start searching in [i<sub>min</sub>, i<sub>max</sub>]
-2. Set i = (i_min + i_max)/2, j = (m+n+1)/2 - i
+1. Set i<sub>min</sub> = 0, i<sub>max</sub> = m, then the searching starts in the range: [i<sub>min</sub>, i<sub>max</sub>]
+2. Set i = (i<sub>min</sub> + i<sub>max</sub>)/2, j = (m+n+1)/2 - i
 3. Now we have len(left_part)=len(right_part). And there are only 3 situations that we may encounter:
     - B[j−1]≤A[i] and A[i−1]≤B[j]\
         (The i and j have found)
