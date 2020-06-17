@@ -13,9 +13,12 @@
 
 ### Problem description
 Tag: [Array]\
-Given n non-negative integers a <sub>1 </sub>, a <sub>2 </sub>, ..., a <sub>n </sub> , where each represents a point at coordinate (i, a <sub>i </sub>). n vertical lines are drawn such that the two endpoints of line i is at (i, a <sub>i </sub>) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
-
+Given n non-negative integers a <sub>1 </sub>, a <sub>2 </sub>, ..., a <sub>n </sub> , where each represents a point at coordinate (i, a <sub>i </sub>). n vertical lines are drawn such that the two endpoints of line i is at (i, a <sub>i </sub>) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.\
 Note: You may not slant the container and n is at least 2.
+
+![Image of Example [1,8,6,2,5,4,8,3,7]](https://github.com/KV152/LeetCode-Solution/blob/master/figures/question_11.jpg)\
+The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
 Example:
 
 ```
@@ -26,6 +29,14 @@ Output: 49
  
 ###  (1) Two Pointer 
  #### Problem and Apporach Analysis
+ Property:
+ - Area is determined by height and width.
+   - Width decreasing as pointers towards each other.
+   - Height is determined by the lowest heights of selected two.\
+ Derivation:
+ - For certain height pointed by index, it can provide its maximum height when the another height is equal or heigher than it.
+ - In other words, beacuse the width decreasing when pointer is moving inward and maximum height of certain index is achived when the another height is euqal or longer to it. Then the area obtained by cetain index oncen the another height is equal or longer than it, is larger than area achieved if another index moving inward.
+ 
  #### Programming
  1. One pointer starts from the rightmost and another starts from the leftmost.
  2. Calculated the area based on the width and height from the two pointer and compated to the stored maximum value
