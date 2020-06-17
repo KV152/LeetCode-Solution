@@ -31,7 +31,7 @@ Output: 49
  #### Problem and Apporach Analysis
  Property:
  - Area is determined by height and width.
-   - Width decreasing as pointers towards each other.
+   - Width decreasing as pointers moving towards each other.
    - Height is determined by the lowest heights of selected two.\
  Derivation:
  - For certain height pointed by index, it can provide its maximum height when the another height is equal or heigher than it.
