@@ -12,7 +12,7 @@ C++ solution for LeetCode
 ## Sort by difficulty
   ### Easy
    - [[1]Two Sum](Two%20Sum.md) 
-   - [[7]Reverse Integer](Reverseo%20Integer.md)
+   - [[7]Reverse Integer](Reverse%20Integer.md)
   ### Medium
    - [[11]Container With Most Water](Container%20With%20Most%20Water.md)
   
@@ -22,4 +22,4 @@ C++ solution for LeetCode
    - [[1]Two Sum](Two%20Sum.md) 
    - [[11]Container With Most Water](Container%20With%20Most%20Water.md)
   ### Math
-   - [[7]Reverse Integer](Reverseo%20Integer.md)
+   - [[7]Reverse Integer](Reverse%20Integer.md)
