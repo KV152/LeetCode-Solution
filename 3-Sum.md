@@ -1,0 +1,166 @@
+# [1]3 Sum (Medium)
+
+The solution using hashing, principle of hashing can be found in [source](https://github.com/KV152/Data-Structures-and-Algorithm/blob/master/Hashing.md "hashing")
+## Contents
+- [Solution Explanation](#solution-explanation)
+  - [Problem description](#problem-description)
+  - [(1) Brute Force](#1-brute-force) 
+  - [(2) Tow-Pass Hash Table](#2-tow-pass-hash-table)
+  - [(3) One-Pass Hash Table](#3-one-pass-hash-table)
+- [C++ knowledge](#c-knowledge)
+  - [General Description](#general-description)
+  - [Implementation Details](#implementation-details)
+
+## Solution Explanation
+
+### Problem description
+Tag: [Array]
+Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Note:
+
+The solution set must not contain duplicate triplets.
+
+Example:
+```
+Given array nums = [-1, 0, 1, 2, -1, -4],
+
+A solution set is:
+[
+  [-1, 0, 1],
+  [-1, -1, 2]
+]
+```
+
+ 
+###  (1) Brute Force 
+  The most stright forward solution.
+   ``` C++
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        std::vector<std::vector<int>> triplets = {};
+        if (nums.size()<3){
+            //triplets.insert({});
+            return triplets;
+        }
+       // Sorting elemets for skipping the duiplicate elements to avoid duiplcate result
+        std::vector<int> sortedNums(nums.begin(), nums.end());
+        std::sort(sortedNums.begin(), sortedNums.end()); //sort defined in <algorithm> 
+
+        // iteratre the nums by iterator
+        std::vector<int>::iterator itX, itY, itZ;
+        int target;
+
+        for (itX = sortedNums.begin(); itX != sortedNums.end()-2; itX++){
+            if (itX != sortedNums.begin() && *itX == *(itX-1))
+                continue;
+            for (itY = itX+1; itY != sortedNums.end()-1; itY++){
+                if (itY != itX+1 && *itY == *(itY-1))
+                    continue;
+                target = 0 - *itX - *itY;
+                for (itZ = itY+1; itZ != sortedNums.end(); itZ++){
+                    if (itZ != itY+1 && *itZ == *(itZ-1))
+                        continue;
+                    if (*itZ == target){
+                        std::vector<int> triplet = {*itX, *itY, *itZ};
+                        triplets.push_back(triplet); 
+                    }                     
+                }
+            }
+        }
+        return triplets;
+    }
+};
+   ```
+
+
+
+- Time complexity : O(n^3)\
+  For each element, we try to find its complement by looping through the rest of array which takes O(n) time. Therefore, the time complexity is O(n^3)
+- Space complexity : O(1) 
+- Performance: Time LIMIT EXCEEDED.
+
+### (2) Tow-Pass Hash Table
+First create a hash table based on the corresponding difference between the sum and individual integer provided in the array. Then search each integer in the hash table to find the complement.
+  
+``` C++
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int>::size_type sz = nums.size();
+        unordered_map<int, int> hashTable;
+        //Create hash table
+        for (int i = 0; i < sz; i++){
+            hashTable.insert({target-nums[i], i});
+        }
+        unordered_map<int, int>::const_iterator it;
+        int index;
+        for (int i = 0; i < sz; i++){
+            if ((it = hashTable.find(nums[i])) != hashTable.end() 
+                && (index = it->second) != i){
+                    vector<int> result = {i, index};
+                    return result;
+                }
+                
+        }
+        vector<int> result = {};
+        return result;        
+    }
+};
+
+```
+
+- Time complexity : O(n)\
+  We traverse the list containing n elements exactly twice.  Since the hash table reduces the look up time to O(1), the time complexity is O(n).
+- Space complexity : O(n)\
+  The extra space required depends on the number of items stored in the hash table, which stores exactly n elements. 
+- Performance: runtime 16 ms, memory usage 10.6 MB.
+    
+    
+
+### (3) One-Pass Hash Table
+   Assuming the number Y is the complement of number X to make up the sum, and array index of Y is behind of X. Moverover, the order of inserting array elements into hash table is according to the array index. Then, we can only find the pair of number after the Y is inserted into the hash table. In other words, we can search the complement and insert the difference simultaneously, and we don't miss the any pair. In this situation, we can insert difference and search complement at the same time. We only need to iterate the array one time.
+
+``` C++
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int>::size_type sz = nums.size();
+        unordered_map<int, int> hashTable;
+
+        unordered_map<int, int>::const_iterator it;
+        for (int i = 0; i < sz; i++){
+            if ((it = hashTable.find(nums[i])) != hashTable.end()){
+                    // The return order
+                    vector<int> result = {it->second, i}; 
+                    return result;
+                }
+            else 
+                hashTable.insert({target-nums[i], i});
+                
+        }
+        vector<int> result = {};
+        return result;        
+    }
+};
+```
+
+
+- Time complexity : O(n)\
+  We traverse the list containing n elements only once. Each look up in the table costs only O(1) time.
+- Space complexity : O(n)\
+  The extra space required depends on the number of items stored in the hash table, which stores at most n elements.
+- Performance: runtime 12 ms, memory usage 10.1 MB.
+
+## C++ knowledge
+   By using properties of set (no duiplcates in set container), there is a fast method to remove duiplcates in a vector.
+    ``` C++
+        // by using properties of set, we can remove all dulplicates in a vector
+        // nums is vector<int>
+        std::set<int> temp;
+        for(std::vector<int>::iterator it = nums.begin(); it != nums.end(); it++) 
+            temp.insert(*it);
+      ```
+
+	
