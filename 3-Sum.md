@@ -112,8 +112,9 @@ public:
 	    upperZ = target - *(itX+1);
             targetZ.clear();
             for (itY = itX+1; itY != nums.end(); itY++){
+	        // Skip impossible elements. ([Y+Z = 0-X, X<=Y<=Y+1<=Z] => Y<=-X-(Y+1))
 	    	if (*itY > upperZ)
-			break;
+		    break;
                 // To find Z
                 if ((itZ = targetZ.find(*itY)) != targetZ.end()){ 
                     triplets.push_back({*itX, itZ->second, *itY});  
