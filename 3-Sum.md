@@ -145,23 +145,51 @@ public:
 ``` C++
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int>::size_type sz = nums.size();
-        unordered_map<int, int> hashTable;
-
-        unordered_map<int, int>::const_iterator it;
-        for (int i = 0; i < sz; i++){
-            if ((it = hashTable.find(nums[i])) != hashTable.end()){
-                    // The return order
-                    vector<int> result = {it->second, i}; 
-                    return result;
-                }
-            else 
-                hashTable.insert({target-nums[i], i});
-                
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        std::vector<std::vector<int>> triplets = {};
+        if (nums.size()<3){
+            return triplets;
         }
-        vector<int> result = {};
-        return result;        
+        
+       // Sorting elemets for skipping the duiplicate elements to avoid duiplcate result
+        std::sort(nums.begin(), nums.end()); //sort defined in <algorithm> 
+
+        // iteratre the nums by iterator
+        std::vector<int>::iterator itX, itY, itZ;
+
+        int target;
+        int upperZ; // For skipping Z
+        for (itX = nums.begin(); itX != nums.end()-2; itX++){
+            if (itX != nums.begin() && *itX == *(itX-1))
+                continue;
+            //Skip remaining elements. ([X+Y+Z = 0, X<=Y<=Z] => X<=0)
+            if (*itX > 0)
+                break;
+            target = 0 - *itX;
+            itZ = nums.end()-1;
+            itY = itX + 1;
+            while(itY != itZ){
+                //Skip impossible remaining elements 
+                if (2*(*itY)>target || 2*(*itZ)<target)
+                    break;
+
+                if (*itY+*itZ == target){
+                    triplets.push_back({*itX, *itY, *itZ});     
+                    itY++;
+                    // avoid duiplicate
+                    while(itY != itZ && *itY == *(itY-1)){
+                        itY++;
+                    } 
+                }
+                else if (*itY+*itZ > target){
+                    itZ--;
+                }
+                else{
+                    itY++;
+                }
+            }
+        }
+        return triplets;
     }
 };
 ```
