@@ -5,8 +5,8 @@ The solution using hashing, principle of hashing can be found in [source](https:
 - [Solution Explanation](#solution-explanation)
   - [Problem description](#problem-description)
   - [(1) Brute Force](#1-brute-force) 
-  - [(2) Tow-Pass Hash Table](#2-tow-pass-hash-table)
-  - [(3) One-Pass Hash Table](#3-one-pass-hash-table)
+  - [(2) Hashing](#2-hashing)
+  - [(3) Two Pointers Approach](#3-two-pointers-approach)
 - [C++ knowledge](#c-knowledge)
   - [General Description](#general-description)
   - [Implementation Details](#implementation-details)
@@ -129,12 +129,12 @@ public:
 - Time complexity : O(n^2)\
 - Space complexity : O(n)\
   The extra space required depends on the number of items stored in the hash table, which stores n elements. 
-- Performance: runtime 10.24 %  1948 ms, memory usage 6.62 % 222.2 MB.
+- Performance: runtime 16.69%  1280 ms, memory usage 7.4 % 149.5 MB.
     
     
 
-### (3) One-Pass Hash Table
-   Assuming the number Y is the complement of number X to make up the sum, and array index of Y is behind of X. Moverover, the order of inserting array elements into hash table is according to the array index. Then, we can only find the pair of number after the Y is inserted into the hash table. In other words, we can search the complement and insert the difference simultaneously, and we don't miss the any pair. In this situation, we can insert difference and search complement at the same time. We only need to iterate the array one time.
+### (3) Two Pointers Approach
+  By fixing X, we can use two pointer approach to find Y and Z without introducing extra space.
 
 ``` C++
 class Solution {
