@@ -8,8 +8,6 @@ The solution using hashing, principle of hashing can be found in [source](https:
   - [(2) Hashing](#2-hashing)
   - [(3) Two Pointers Approach](#3-two-pointers-approach)
 - [C++ knowledge](#c-knowledge)
-  - [General Description](#general-description)
-  - [Implementation Details](#implementation-details)
 
 ## Solution Explanation
 
@@ -195,11 +193,11 @@ public:
 ```
 
 
-- Time complexity : O(n)\
+- Time complexity : O(n^2)\
   We traverse the list containing n elements only once. Each look up in the table costs only O(1) time.
-- Space complexity : O(n)\
+- Space complexity : O(1)\
   The extra space required depends on the number of items stored in the hash table, which stores at most n elements.
-- Performance: runtime 12 ms, memory usage 10.1 MB.
+- Performance: runtime 46.73% 128 ms, memory usage 66% 19.8 MB.
 
 ## C++ knowledge
    By using properties of set (no duiplcates in set container), there is a fast method to remove duiplcates in a vector.
