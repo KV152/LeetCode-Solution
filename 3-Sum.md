@@ -81,41 +81,55 @@ public:
 - Space complexity : O(1) 
 - Performance: Time LIMIT EXCEEDED.
 
-### (2) Tow-Pass Hash Table
-First create a hash table based on the corresponding difference between the sum and individual integer provided in the array. Then search each integer in the hash table to find the complement.
+### (2) Hashing
+By fixing X, the probloem is reduced to two sum. We can use two sum hashing solution.
   
 ``` C++
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int>::size_type sz = nums.size();
-        unordered_map<int, int> hashTable;
-        //Create hash table
-        for (int i = 0; i < sz; i++){
-            hashTable.insert({target-nums[i], i});
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        std::vector<std::vector<int>> triplets = {};
+        if (nums.size()<3){
+            //triplets.insert({});
+            return triplets;
         }
-        unordered_map<int, int>::const_iterator it;
-        int index;
-        for (int i = 0; i < sz; i++){
-            if ((it = hashTable.find(nums[i])) != hashTable.end() 
-                && (index = it->second) != i){
-                    vector<int> result = {i, index};
-                    return result;
+        
+       // Sorting elemets for skipping the duiplicate elements to avoid duiplcate result
+        std::sort(nums.begin(), nums.end()); //sort defined in <algorithm> 
+
+        // iteratre the nums by iterator
+        std::vector<int>::iterator itX, itY;
+	std::unordered_map<int, int> targetZ;
+        std::unordered_map<int, int>::iterator itZ;
+        int target;
+        for (itX = nums.begin(); itX != nums.end()-2; itX++){
+            if (itX != nums.begin() && *itX == *(itX-1))
+                continue;
+            target = 0 - *itX;
+            targetZ.clear();
+            for (itY = itX+1; itY != nums.end(); itY++){
+                // To find Z
+                if ((itZ = targetZ.find(*itY)) != targetZ.end()){ 
+                    triplets.push_back({*itX, itZ->second, *itY});  
+                    // avoid duplicate
+                    while ((itY+1) != nums.end() && *(itY+1) == *itY){
+                        itY++;
+                        continue;  
+                    }
+                                        
                 }
-                
+                targetZ.insert({target - *itY, *itY});
+            }
         }
-        vector<int> result = {};
-        return result;        
+        return triplets;
     }
 };
-
 ```
 
-- Time complexity : O(n)\
-  We traverse the list containing n elements exactly twice.  Since the hash table reduces the look up time to O(1), the time complexity is O(n).
+- Time complexity : O(n^2)\
 - Space complexity : O(n)\
-  The extra space required depends on the number of items stored in the hash table, which stores exactly n elements. 
-- Performance: runtime 16 ms, memory usage 10.6 MB.
+  The extra space required depends on the number of items stored in the hash table, which stores n elements. 
+- Performance: runtime 10.24 %  1948 ms, memory usage 6.62 % 222.2 MB.
     
     
 
