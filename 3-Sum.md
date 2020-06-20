@@ -102,6 +102,7 @@ public:
 	std::unordered_map<int, int> targetZ;
         std::unordered_map<int, int>::iterator itZ;
         int target;
+        int upperZ; // For skipping Z
         for (itX = nums.begin(); itX != nums.end()-2; itX++){
             if (itX != nums.begin() && *itX == *(itX-1))
                 continue;
