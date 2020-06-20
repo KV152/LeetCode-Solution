@@ -105,9 +105,15 @@ public:
         for (itX = nums.begin(); itX != nums.end()-2; itX++){
             if (itX != nums.begin() && *itX == *(itX-1))
                 continue;
+            //Skip impossible elements. ([X+Y+Z = 0, X<=Y<=Z] => X<=0)
+            if (*itX > 0)
+                break;
             target = 0 - *itX;
+	    upperZ = target - *(itX+1);
             targetZ.clear();
             for (itY = itX+1; itY != nums.end(); itY++){
+	    	if (*itY > upperZ)
+			break;
                 // To find Z
                 if ((itZ = targetZ.find(*itY)) != targetZ.end()){ 
                     triplets.push_back({*itX, itZ->second, *itY});  
