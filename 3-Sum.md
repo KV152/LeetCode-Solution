@@ -41,7 +41,6 @@ public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         std::vector<std::vector<int>> triplets = {};
         if (nums.size()<3){
-            //triplets.insert({});
             return triplets;
         }
        // Sorting elemets for skipping the duiplicate elements to avoid duiplcate result
@@ -90,7 +89,6 @@ public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         std::vector<std::vector<int>> triplets = {};
         if (nums.size()<3){
-            //triplets.insert({});
             return triplets;
         }
         
@@ -177,6 +175,7 @@ public:
 
 ## C++ knowledge
    By using properties of set (no duiplcates in set container), there is a fast method to remove duiplcates in a vector.
+   
     ``` C++
         // by using properties of set, we can remove all dulplicates in a vector
         // nums is vector<int>
