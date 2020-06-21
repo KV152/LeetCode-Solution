@@ -4,8 +4,7 @@
 - [Solution Explanation](#solution-explanation)
   - [Problem description](#problem-description)
   - [(1) Brute Force](#1-brute-force) 
-  - [(2) Hashing](#2-hashing)
-  - [(3) Two Pointers Approach](#3-two-pointers-approach)
+  - [(2) Two Pointers Approach](#3-two-pointers-approach)
 - [C++ knowledge](#c-knowledge)
 
 ## Solution Explanation
@@ -67,126 +66,53 @@ public:
 - Space complexity : O(1) 
 - Performance: runtime 5.03 % 1656 (ms), memory usage 18.61 % 9.9 (MB). 
 
-### (2) Hashing
-By fixing X, the probloem is reduced to two sum. We can use two sum hashing solution.
-  
-``` C++
-class Solution {
-public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        std::vector<std::vector<int>> triplets = {};
-        if (nums.size()<3){
-            return triplets;
-        }
-        
-       // Sorting elemets for skipping the duiplicate elements to avoid duiplcate result
-        std::sort(nums.begin(), nums.end()); //sort defined in <algorithm> 
 
-        // iteratre the nums by iterator
-        std::vector<int>::iterator itX, itY;
-	std::unordered_map<int, int> targetZ;
-        std::unordered_map<int, int>::iterator itZ;
-        int target;
-        int upperZ; // For skipping Z
-        for (itX = nums.begin(); itX != nums.end()-2; itX++){
-            if (itX != nums.begin() && *itX == *(itX-1))
-                continue;
-            //Skip impossible elements. ([X+Y+Z = 0, X<=Y<=Z] => X<=0)
-            if (*itX > 0)
-                break;
-            target = 0 - *itX;
-	    upperZ = target - *(itX+1);
-            targetZ.clear();
-            for (itY = itX+1; itY != nums.end(); itY++){
-	        // Skip impossible elements. ([Y+Z = 0-X, X<=Y<=Y+1<=Z] => Y<=-X-(Y+1))
-	    	if (*itY > upperZ)
-		    break;
-                // To find Z
-                if ((itZ = targetZ.find(*itY)) != targetZ.end()){ 
-                    triplets.push_back({*itX, itZ->second, *itY});  
-                    // avoid duplicate
-                    while ((itY+1) != nums.end() && *(itY+1) == *itY){
-                        itY++;
-                        continue;  
-                    }
-                                        
-                }
-                targetZ.insert({target - *itY, *itY});
-            }
-        }
-        return triplets;
-    }
-};
-```
-
-- Time complexity : O(n^2)\
-- Space complexity : O(n)\
-  The extra space required depends on the number of items stored in the hash table, which stores n elements. 
-- Performance: runtime 16.69%  1280 ms, memory usage 7.4 % 149.5 MB.
-    
-    
-
-### (3) Two Pointers Approach
-  By fixing X, we can use two pointer approach to find Y and Z without introducing extra space.
+### (2) Two Pointers Approach
+  By fixing X, we can use two pointer approach to find Y and Z.
 
 ``` C++
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        std::vector<std::vector<int>> triplets = {};
-        if (nums.size()<3){
-            return triplets;
-        }
-        
-       // Sorting elemets for skipping the duiplicate elements to avoid duiplcate result
-        std::sort(nums.begin(), nums.end()); //sort defined in <algorithm> 
-
-        // iteratre the nums by iterator
+    int threeSumClosest(vector<int>& nums, int target) {
         std::vector<int>::iterator itX, itY, itZ;
-
-        int target;
-        int upperZ; // For skipping Z
-        for (itX = nums.begin(); itX != nums.end()-2; itX++){
-            if (itX != nums.begin() && *itX == *(itX-1))
-                continue;
-            //Skip remaining elements. ([X+Y+Z = 0, X<=Y<=Z] => X<=0)
-            if (*itX > 0)
-                break;
-            target = 0 - *itX;
+        if (nums.size()==3)
+            return (nums[0]+nums[1]+nums[2]);
+        std::sort(nums.begin(), nums.end());
+        int absDif, sum, temp;
+        // abs defined in <cmath>
+        sum = nums[0]+nums[1]+nums[2];
+        absDif = std::abs(target - sum); //Initial value
+        for (itX = nums.begin(); itX<nums.end()-2; itX++){
+            itY = itX+1;
             itZ = nums.end()-1;
-            itY = itX + 1;
             while(itY != itZ){
-                //Skip impossible remaining elements 
-                if (2*(*itY)>target || 2*(*itZ)<target)
-                    break;
-
-                if (*itY+*itZ == target){
-                    triplets.push_back({*itX, *itY, *itZ});     
-                    itY++;
-                    // avoid duiplicate
-                    while(itY != itZ && *itY == *(itY-1)){
-                        itY++;
-                    } 
+                temp = *itX+*itY+*itZ;
+                if (std::abs(temp-target) < absDif){
+		    // Found the target
+                    if (temp == target){
+                        return temp;
+                    }
+                    sum = temp;
+                    absDif = std::abs(temp-target);
                 }
-                else if (*itY+*itZ > target){
+                else if (temp>target){
                     itZ--;
                 }
-                else{
+                else
+                {
                     itY++;
                 }
             }
         }
-        return triplets;
+        return sum;
     }
 };
 ```
 
 
 - Time complexity : O(n^2)\
-  We traverse the list containing n elements only once. Each look up in the table costs only O(1) time.
 - Space complexity : O(1)\
-  The extra space required depends on the number of items stored in the hash table, which stores at most n elements.
-- Performance: runtime 46.73% 128 ms, memory usage 66% 19.8 MB.
+- Performance: runtime 88.41 % 12 ms, memory usage 5.14 % 10.1 MB.
 
 ## C++ knowledge
    By using properties of set (no duiplcates in set container), there is a fast method to remove duiplcates in a vector.
