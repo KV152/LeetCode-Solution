@@ -15,11 +15,13 @@ C++ solution for LeetCode
    - [[7]Reverse Integer](Reverse%20Integer.md)
   ### Medium
    - [[11]Container With Most Water](Container%20With%20Most%20Water.md)
+   - [[15]3-Sum](3%20Sum.md)
   
 
 ## Sort by tag
   ### Array
    - [[1]Two Sum](Two%20Sum.md) 
    - [[11]Container With Most Water](Container%20With%20Most%20Water.md)
+   - [[15]3-Sum](3%20Sum.md)
   ### Math
    - [[7]Reverse Integer](Reverse%20Integer.md)
