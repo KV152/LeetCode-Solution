@@ -12,7 +12,8 @@ Beause we have find all possible combinations, we have to transver the whole arr
 
 ### Problem description
 Tag: [Array]
-Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Given an array ```nums``` of n integers, are there elements a, b, c in ```nums``` such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
 
 Note:
 
