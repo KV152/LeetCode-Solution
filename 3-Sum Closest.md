@@ -1,5 +1,5 @@
 # [1]3 Sum Closest(Medium)
-
+Beacuse the target is to find the closest sum instead of exact one, hashing can't be used in this situation.
 ## Contents
 - [Solution Explanation](#solution-explanation)
   - [Problem description](#problem-description)
@@ -115,14 +115,6 @@ public:
 - Performance: runtime 88.41 % 12 ms, memory usage 5.14 % 10.1 MB.
 
 ## C++ knowledge
-   By using properties of set (no duiplcates in set container), there is a fast method to remove duiplcates in a vector.
-   
-    ``` C++
-        // by using properties of set, we can remove all dulplicates in a vector
-        // nums is vector<int>
-        std::set<int> temp;
-        for(std::vector<int>::iterator it = nums.begin(); it != nums.end(); it++) 
-            temp.insert(*it);
-      ```
+```abs``` function is defiend in ```<cmath>``` library which returns absolute value of input. This function accept ```double```, ```float``` and ```long double``` type.
 
 	
