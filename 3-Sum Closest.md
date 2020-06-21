@@ -4,7 +4,7 @@
 - [Solution Explanation](#solution-explanation)
   - [Problem description](#problem-description)
   - [(1) Brute Force](#1-brute-force) 
-  - [(2) Two Pointers Approach](#3-two-pointers-approach)
+  - [(2) Two Pointers Approach](#2-two-pointers-approach)
 - [C++ knowledge](#c-knowledge)
 
 ## Solution Explanation
