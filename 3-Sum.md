@@ -1,6 +1,5 @@
 # [1]3 Sum (Medium)
-
-The solution using hashing, principle of hashing can be found in [source](https://github.com/KV152/Data-Structures-and-Algorithm/blob/master/Hashing.md "hashing")
+Beause we have find all possible combinations, we have to transver the whole array. Then tow pointer approach is more suitable than hashing techniques. 
 ## Contents
 - [Solution Explanation](#solution-explanation)
   - [Problem description](#problem-description)
