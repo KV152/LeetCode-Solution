@@ -16,6 +16,7 @@ C++ solution for LeetCode
   ### Medium
    - [[11]Container With Most Water](Container%20With%20Most%20Water.md)
    - [[15]3-Sum](3-Sum.md)
+   - [[18]4-Sum](4-Sum.md)
   
 
 ## Sort by tag
@@ -23,5 +24,6 @@ C++ solution for LeetCode
    - [[1]Two Sum](Two%20Sum.md) 
    - [[11]Container With Most Water](Container%20With%20Most%20Water.md)
    - [[15]3-Sum](3-Sum.md)
+   - [[18]4-Sum](4-Sum.md)
   ### Math
    - [[7]Reverse Integer](Reverse%20Integer.md)
