@@ -1,10 +1,13 @@
 # [1]4 Sum (Medium)
-General solution for K-sum problem, 
+Providing general solution for K-sum problem.
 ## Contents
 - [Solution Explanation](#solution-explanation)
   - [Problem description](#problem-description)
   - [(1) Two Pointers Approach](#1-two-pointers-approach)
   - [(2) Hashing](#2-hashing)
+- [General Solution for K-sum problem]
+  - [(1) Two Pointers Approach]()
+  - [(2) Hashing]()
 - [C++ knowledge](#c-knowledge)
 
 ## Solution Explanation
