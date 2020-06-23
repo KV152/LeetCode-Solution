@@ -5,7 +5,7 @@ Providing general solution for K-sum problem.
   - [Problem description](#problem-description)
   - [(1) Two Pointers Approach](#1-two-pointers-approach)
   - [(2) Hashing](#2-hashing)
-- [General Solution for K-sum problem](#general-solution-for-ksum-problem)
+- [General Solution for K-sum problem](#general-solution-for-k-sum-problem)
   - [(1) Two Pointers Approach](#1-two-pointers-approach-general)
   - [(2) Hashing](#2-hashing-general)
 - [C++ knowledge](#c-knowledge)
