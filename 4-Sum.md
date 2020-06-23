@@ -92,66 +92,55 @@ By fixing X, the probloem is reduced to two sum. We can use two sum hashing solu
 ``` C++
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        std::vector<std::vector<int>> triplets = {};
-        if (nums.size()<3){
-            return triplets;
-        }
-        
-       // Sorting elemets for skipping the duiplicate elements to avoid duiplcate result
-        std::sort(nums.begin(), nums.end()); //sort defined in <algorithm> 
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        vector<vector<int>> quadruplets;
+        std::unordered_map<int, int> M;
+        // I, J, K, M 
+        //sorting
+        std::sort(nums.begin(),nums.end());
 
-        // iteratre the nums by iterator
-        std::vector<int>::iterator itX, itY;
-	std::unordered_map<int, int> targetZ;
-        std::unordered_map<int, int>::iterator itZ;
-        int target;
-        int upperZ; // For skipping Z
-        for (itX = nums.begin(); itX != nums.end()-2; itX++){
-            if (itX != nums.begin() && *itX == *(itX-1))
+        if (nums.size()<3)
+            return quadruplets;
+
+        std::vector<int>::iterator itI, itJ, itK;
+        std::unordered_map<int, int>::iterator itM;
+        int twoSum, temp;
+        for (itI = nums.begin(); itI != nums.end()-3; itI++){
+            // avoid duiplicates
+           if (itI != nums.begin() && *itI==*(itI-1)){
                 continue;
-            //Skip impossible elements. ([X+Y+Z = 0, X<=Y<=Z] => X<=0)
-            if (*itX > 0)
-                break;
-            target = 0 - *itX;
-	    upperZ = target - *(itX+1);
-            targetZ.clear();
-            for (itY = itX+1; itY != nums.end(); itY++){
-	        // Skip impossible elements. ([Y+Z = 0-X, X<=Y<=Y+1<=Z] => Y<=-X-(Y+1))
-	    	if (*itY > upperZ)
-		    break;
-                // To find Z
-                if ((itZ = targetZ.find(*itY)) != targetZ.end()){ 
-                    triplets.push_back({*itX, itZ->second, *itY});  
-                    // avoid duplicate
-                    while ((itY+1) != nums.end() && *(itY+1) == *itY){
-                        itY++;
-                        continue;  
-                    }
-                                        
+            }
+            for (itJ = itI+1; itJ != nums.end()-2; itJ++){
+                // avoid duiplicates
+                if (itJ != itI+1 && *itJ==*(itJ-1)){
+                    continue;
                 }
-                targetZ.insert({target - *itY, *itY});
+                twoSum = *itI + *itJ;
+                M.clear();
+                for (itK = itJ+1; itK != nums.end(); itK++){
+                    if ( (itM=M.find(*itK)) != M.end()){
+                        quadruplets.push_back({*itI, *itJ, itM->second, *itK});
+                        //avoid duiplicates
+                        while(itK != (nums.end()-1) && *itK == *(itK+1)){
+                            itK++;
+                        }
+                    }
+                    else{
+                        M.insert({target-*itK-twoSum, *itK});
+                    }
+                }
             }
         }
-        return triplets;
+        return quadruplets;
     }
 };
 ```
 
-- Time complexity : O(n^2)\
+- Time complexity : O(n^3)\
 - Space complexity : O(n)\
-  The extra space required depends on the number of items stored in the hash table, which stores n elements. 
-- Performance: runtime 16.69%  1280 ms, memory usage 7.4 % 149.5 MB.
+- Performance: Time Limit Exceeded
     
 ## C++ knowledge
-   By using properties of set (no duiplcates in set container), there is a fast method to remove duiplcates in a vector.
-   
-    ``` C++
-        // by using properties of set, we can remove all dulplicates in a vector
-        // nums is vector<int>
-        std::set<int> temp;
-        for(std::vector<int>::iterator it = nums.begin(); it != nums.end(); it++) 
-            temp.insert(*it);
-      ```
+
 
 	
