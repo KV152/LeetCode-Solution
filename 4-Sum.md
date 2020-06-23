@@ -5,9 +5,9 @@ Providing general solution for K-sum problem.
   - [Problem description](#problem-description)
   - [(1) Two Pointers Approach](#1-two-pointers-approach)
   - [(2) Hashing](#2-hashing)
-- [General Solution for K-sum problem]
-  - [(1) Two Pointers Approach]()
-  - [(2) Hashing]()
+- [General Solution for K-sum problem](#general-solution-fork-sum-problem)
+  - [(1) Two Pointers Approach](#1-two-pointers-approach-general)
+  - [(2) Hashing](#2-hashing-general)
 - [C++ knowledge](#c-knowledge)
 
 ## Solution Explanation
@@ -84,8 +84,8 @@ public:
 ```
 
 
-- Time complexity : O(n^3)\
-- Space complexity : O(1)\
+- Time complexity : O(n^3)
+- Space complexity : O(1)
 - Performance: runtime 37.57 % 104 ms, memory usage 81.75 % 12.9 MB.
 
 
@@ -139,9 +139,13 @@ public:
 };
 ```
 
-- Time complexity : O(n^3)\
-- Space complexity : O(n)\
+- Time complexity : O(n^3)
+- Space complexity : O(n)
 - Performance: Time Limit Exceeded
+
+## General Solution for K-Sum problem
+### (1) Two Pointers Approach General
+### (2) Hashing General
     
 ## C++ knowledge
 
