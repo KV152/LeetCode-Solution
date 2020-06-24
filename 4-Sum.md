@@ -146,8 +146,85 @@ public:
 ## General Solution for K-Sum problem
 ### (1) Two Pointers Approach General
 ### (2) Hashing General
-    
+There are two functions called twoSum and KSum. The twoSum function is used for sloving two sum problem and the KSum is an helper function. This helper function is used to reduced the K-sum problem to two sum and formate the result for return.
+
+```C++
+class Solution {
+public:
+    vector<vector<int>> KSum(int K, int target, 
+    std::vector<int>::iterator start, std::vector<int>::iterator end,
+    vector<int>& nums){
+        // sorting the array at first place
+        int currentNum;
+        vector<vector<int>> result, temp;
+        std::vector<int>::iterator it;
+        vector<vector<int>>::iterator itResult;
+        if (start == nums.begin()){
+            std::sort(nums.begin(), nums.end());
+        }
+        // distance defined in <iterator>
+        if (K>std::distance(start, end) || K*(*start)> target || K*(*(end-1))<target){
+            return result;
+        }
+
+        if (K==2){
+            return twoSum(target, start, end);
+        }
+        else{
+            for (it = start; it != (end-K+2); it++){
+                //avoid duplicates
+                if (it != start && *it == *(it-1)){
+                    continue;
+                }
+                temp = KSum(K-1, target - *it, it+1, end, nums);
+
+                for (unsigned i = 0; i<temp.size(); i++){
+                    result.push_back({*it});
+                    result.back().insert(result.back().end(), temp[i].begin(), temp[i].end());
+                }
+                if (temp.size()>0){
+                }
+            }
+            return result;
+        }
+    }
+
+    vector<vector<int>> twoSum(int target, 
+    std::vector<int>::iterator start, std::vector<int>::iterator end){
+        // X, Y
+        std::unordered_set<int> Yset;
+        std::vector<int>::iterator it;
+        vector<vector<int>> result;
+        std::unordered_set<int>::iterator Y;
+        for (it = start; it != end; it++){
+            if ((Y = Yset.find(*it)) != Yset.end()){
+                result.push_back({target-*it, *it});
+                //avoid duplicates
+                while(it != (end-1) && *it == *(it+1))
+                    it++;
+            }
+            else{
+                Yset.insert(target-*it);
+            }
+        }
+        return result;
+    }
+
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        return KSum(4, target, nums.begin(), nums.end(), nums);
+    }
+};
+```
+- Time complexity : O(n^3)
+- Space complexity : O(n)
+- Performance: running time 33.2 % 120 ms, memory usage 15.02 % 28.6 MB.
+
 ## C++ knowledge
+- ```distance(A, B)``` defined in ```<iterator>``` library which can be used to measure the distance between two iterator A and B.<\br> 
+	- Performance: Constant for random-access iterators. Otherwise, linear in n.
+- ```unordered_set``` defined in ```<unordered_set>``` library. It's similar to data tpye```unordered_map``` without associated values. 
+	- ```find(key)``` An iterator to the element, if the specified value is found, or unordered_set::end if it is not found in the container.
+		- Performance: Average case: constant. Worst case: linear in container size.
+	- ```count(key)``` 1 if an element with a value equivalent to k is found, or zero otherwise.
+		- Performance: Average case: constant. Worst case: linear in container size.
 
-
-	
