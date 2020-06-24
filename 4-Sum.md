@@ -305,4 +305,5 @@ public:
 		- Performance: Average case: constant. Worst case: linear in container size.
 	- ```count(key)``` 1 if an element with a value equivalent to k is found, or zero otherwise.
 		- Performance: Average case: constant. Worst case: linear in container size.
+- ```vector```. The last element in the vector can be found by calling method ```back()``` or by the iterator ```end()-1```. There is an ending element in the vector, which  can be accessed by the method ```end()``` which returns a iterator point to that element.
 
