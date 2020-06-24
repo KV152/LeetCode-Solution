@@ -220,7 +220,7 @@ public:
 - Performance: running time 33.2 % 120 ms, memory usage 15.02 % 28.6 MB.
 
 ## C++ knowledge
-- ```distance(A, B)``` defined in ```<iterator>``` library which can be used to measure the distance between two iterator A and B.<\br> 
+- ```distance(A, B)``` defined in ```<iterator>``` library which can be used to measure the distance between two iterator A and B.
 	- Performance: Constant for random-access iterators. Otherwise, linear in n.
 - ```unordered_set``` defined in ```<unordered_set>``` library. It's similar to data tpye```unordered_map``` without associated values. 
 	- ```find(key)``` An iterator to the element, if the specified value is found, or unordered_set::end if it is not found in the container.
