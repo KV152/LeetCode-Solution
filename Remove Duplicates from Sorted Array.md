@@ -44,7 +44,7 @@ for (int i = 0; i < len; i++) {
 
 ### (1) Two Pointers Approach
 One pointer (x) pointed to the index where last unique integer, and the another pointer (y) is moving to the end for finding the next unique value.
-When the next unique value has found, exchanging the two values pointed by two pointer (x+1 and y)
+When the next unique value has found, let value from (x+1) to be the value stored in y;
 ``` C++
 class Solution {
 public:
