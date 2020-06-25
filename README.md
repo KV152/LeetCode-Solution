@@ -13,6 +13,7 @@ C++ solution for LeetCode
   ### Easy
    - [[1]Two Sum](Two%20Sum.md) 
    - [[7]Reverse Integer](Reverse%20Integer.md)
+   - [[26]Remove Duplicates from Sorted Array](Remove%20Duplicates%20from%20Sorted%20Array.md)
   ### Medium
    - [[11]Container With Most Water](Container%20With%20Most%20Water.md)
    - [[15]3-Sum](3-Sum.md)
@@ -25,5 +26,6 @@ C++ solution for LeetCode
    - [[11]Container With Most Water](Container%20With%20Most%20Water.md)
    - [[15]3-Sum](3-Sum.md)
    - [[18]4-Sum](4-Sum.md)
+   - [[26]Remove Duplicates from Sorted Array](Remove%20Duplicates%20from%20Sorted%20Array.md)
   ### Math
    - [[7]Reverse Integer](Reverse%20Integer.md)
