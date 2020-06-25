@@ -3,7 +3,7 @@ Title is misleading. Not removing duplicates, just moving the unqiue element in 
 ## Contents
 - [Solution Explanation](#solution-explanation)
   - [Problem description](#problem-description)
-  - [(1) Two Pointers Approach](#1-tow-pointers-approach)
+  - [(1) Two Pointers Approach](#1-two-pointers-approach)
 - [C++ knowledge](#c-knowledge)
 
 ## Solution Explanation
