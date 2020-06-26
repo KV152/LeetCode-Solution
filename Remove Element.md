@@ -4,6 +4,7 @@ Title is misleading. Not removing target value, just moving the elements without
 - [Solution Explanation](#solution-explanation)
   - [Problem description](#problem-description)
   - [(1) Two Pointers Approach](#1-two-pointers-approach)
+  - [(2) Two Pointers Simplified](#1-two-pointers-simplified)
 - [C++ knowledge](#c-knowledge)
 
 ## Solution Explanation
@@ -86,5 +87,29 @@ public:
   We traverse the list containing n elements only once. 
 - Space complexity : O(1)\
 - Performance: runtime  62.72 % 4 ms, memory usage 83.68 %  8.9 MB.
-
+### Two Pointers Simplified
+In this version, the process is simplifid. Copy Y to X without checking value of Y.
+```C++
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        std::vector<int>::size_type x, y;
+        x = 0; 
+        y = nums.size(); // check all elements
+        while (x < y ){
+            if (nums[x] == val){
+                nums[x] = nums[y-1];
+                y--;
+            }
+            else
+                x++;
+        }
+        return x;
+    }
+};
+```
+- Time complexity : O(n)\
+  We traverse the list containing n elements only once. 
+- Space complexity : O(1)\
+- Performance: runtime 100 % 0 ms, memory usage 48.67 %  9 MB.
 ## C++ knowledge
