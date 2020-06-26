@@ -85,7 +85,6 @@ public:
 };
 ```
 - Time complexity : O(n)\
-  We traverse the list containing n elements only once. 
 - Space complexity : O(1)\
 - Performance: runtime  62.72 % 4 ms, memory usage 83.68 %  8.9 MB.
 ### (2) Two Pointers Simplified
@@ -110,10 +109,30 @@ public:
 };
 ```
 - Time complexity : O(n)\
-  We traverse the list containing n elements only once. 
+  Assume the array has a total of nnn elements, both i and j traverse at most 2n steps.
 - Space complexity : O(1)\
 - Performance: runtime 100 % 0 ms, memory usage 48.67 %  9 MB.
 
 ### (3) Two Pointers Same Side
 It's variant of two pointers that two pointer start from the same side (left side).
+Y move faster than X to find the untarget value, and X points to the place where next un target value should be.
+```C++
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        std::vector<int>::size_type x, y;
+        for (x=0, y=0; y<nums.size(); y++){
+            if (nums[y] != val){
+                nums[x++] = nums[y];
+            }
+        }
+        return x;
+    }
+};
+```
+- Time complexity : O(n)\
+  Both x and y traverse at most n steps. In this approach, the number of assignment operations is equal to the number of elements to remove. So it is more efficient if elements to remove are rare.
+- Space complexity : O(1)\
+- Performance: runtime 62.72 % 4 ms, memory usage 13.99 %  9.1 MB.
+
 ## C++ knowledge
