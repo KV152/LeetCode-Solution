@@ -19,6 +19,7 @@ C++ solution for LeetCode
    - [[11]Container With Most Water](Container%20With%20Most%20Water.md)
    - [[15]3-Sum](3-Sum.md)
    - [[18]4-Sum](4-Sum.md)
+   - [[31]Next Permutation.md](Next%20Permutation.md)
   
 
 ## Sort by tag
@@ -29,5 +30,6 @@ C++ solution for LeetCode
    - [[18]4-Sum](4-Sum.md)
    - [[26]Remove Duplicates from Sorted Array](Remove%20Duplicates%20from%20Sorted%20Array.md)
    - [[27]Remove Element](Remove%20Element.md)
+   - [[31]Next Permutation.md](Next%20Permutation.md)
   ### Math
    - [[7]Reverse Integer](Reverse%20Integer.md)
