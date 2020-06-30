@@ -41,8 +41,8 @@ Start from the ascending order and end in descending order. We can take "1, 2, 3
 ```
 
 ### (1) Two Pointer Approach
+[Directly from leetcode solution](https://leetcode.com/problems/next-permutation/solution/)
 #### Apporach Analysis
-Directly from leetcode solution.
 First, we observe that for any given sequence that is in descending order, no next larger permutation is possible. For example, no next permutation is possible for the following array:
 ```
 [9, 5, 4, 3, 1]
